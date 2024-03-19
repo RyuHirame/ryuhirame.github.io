@@ -1,6 +1,6 @@
 ---
 layout: home
-title: "平井龍"
+title: "平井龍 (Ryu Hirai)"
 ---
 
 ## 所属

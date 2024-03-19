@@ -1,13 +1,36 @@
 <html>
 <head>
     <title>発表 - 平井龍</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
     <meta charset="utf-8">
 </head>
 <body>
+    <textarea id="bibtex_input" style="display:none;"></textarea>
+    <div id="bibtex_display_wrap"></div>
     
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/pcooksey/bibtex-js@1.0.0/src/bibtex_js.min.js"></script>
     <script>
-        // window.location.href = "https://twitter.com/i/user/1766787944369754112";
+
+        const bibtex_input = document.getElementById("bibtex_input");
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', "https://tt.tagaya.net/publications", true);
+        xhr.responseType = 'json';
+        xhr.onload = function() {
+            const status = xhr.status;
+            if (status === 200) {
+                // console.log(xhr.response);
+                for(let article of xhr.response ){
+                    bibtex_input.innerText += "\n" + article["bib"];
+                    // console.log(article["bib"]);
+                }
+            } else {
+                
+            }
+            document.getElementById("bibtex_display_wrap").innerHTML = '<div id="bibtex_display"></div>';
+        };
+        xhr.send();
+
+ 
     </script>
 </body>
                 
